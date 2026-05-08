@@ -1,0 +1,79 @@
+⭐ Step 4: Now that you know each point is { x: number, y: number }…
+You need to think about how to update those numbers during the walk.
+
+A random walk step works like this:
+
+pick a random angle
+
+move in that direction
+
+update x and y
+
+So here’s your next thinking challenge:
+
+👉 If you have an angle θ, how do you turn that into a change in x and y?
+
+Hint: this is something you’ve probably seen in maths or physics — converting an angle into horizontal and vertical movement.
+
+Try to describe it in your own words.
+
+im not sure
+No worries, Jason — this is one of those moments where a tiny bit of maths unlocks the whole idea. You’re close, and you already have the right structure (an array of {x, y} objects). Now we just need to understand how to move from one point to the next.
+
+Let’s think it through together, slowly and clearly.
+
+⭐ The key idea: an angle tells you how much to move horizontally and vertically
+Imagine you’re standing at the centre of a circle.
+If you walk 1 step in some direction, that direction can be described by an angle θ.
+
+Now the question becomes:
+
+👉 How do we break that step into:
+
+a horizontal part (x‑movement)
+
+a vertical part (y‑movement)
+
+This is exactly what cosine and sine do.
+
+But I don’t want you to memorise that — I want you to understand it.
+
+⭐ Think of a circle
+Picture a circle with radius 1.
+
+If you pick an angle θ:
+
+the x‑coordinate on the circle is cos(θ)
+
+the y‑coordinate on the circle is sin(θ)
+
+Why?
+Because cosine tells you “how far along the horizontal direction this angle points”,
+and sine tells you “how far up/down this angle points”.
+
+So if you take a step of size 1:
+
+your horizontal movement is cos(θ)
+
+your vertical movement is sin(θ)
+
+If your step size is bigger, say stepSize, then:
+
+horizontal movement = stepSize * cos(θ)
+
+vertical movement = stepSize * sin(θ)
+
+⭐ Let me check your understanding
+You don’t need to be perfect — just think it through.
+
+If you’re at position:
+
+Code
+x = 0
+y = 0
+and you pick an angle θ,
+and your step size is 1…
+
+👉 How would you update x and y using what we just talked about?
+
+Try to write it in your own words, even if it’s rough.
