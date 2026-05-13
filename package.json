@@ -1,0 +1,27 @@
+{
+  "name": "bpho-computational-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cybergman-droid/BPho-Computational-Challenge.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Cybergman-droid/BPho-Computational-Challenge/issues"
+  },
+  "homepage": "https://github.com/Cybergman-droid/BPho-Computational-Challenge#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.3.0",
+    "chart.js": "^4.5.1",
+    "daisyui": "^5.5.19",
+    "tailwindcss": "^4.3.0"
+  }
+}
