@@ -1,18 +1,200 @@
-function randomWalk() {
+const colours = [
+	"#e6194B",
+	"#3cb44b",
+	"#ffe119",
+	"#4363d8",
+	"#f58231",
+	"#911eb4",
+	"#46f0f0",
+	"#f032e6",
+	"#bcf60c",
+	"#fabebe",
+	"#008080",
+	"#e6beff",
+	"#9A6324",
+	"#fffac8",
+	"#800000",
+	"#aaffc3",
+	"#808000",
+	"#ffd8b1",
+	"#000075",
+	"#808080",
+	"#ffe4e1",
+	"#98fb98",
+	"#afeeee",
+	"#dda0dd",
+	"#ffdead",
+	"#87cefa",
+	"#ffb6c1",
+	"#20b2aa",
+	"#cd5c5c",
+	"#daa520",
+	"#7b68ee",
+	"#40e0d0",
+	"#ff6347",
+	"#6a5acd",
+	"#00ced1",
+	"#ff69b4",
+	"#ba55d3",
+	"#32cd32",
+	"#ff4500",
+	"#1e90ff",
+	"#adff2f",
+	"#ff8c00",
+	"#00fa9a",
+	"#dc143c",
+	"#00bfff",
+	"#7fff00",
+	"#ff00ff",
+	"#2e8b57",
+	"#ff1493",
+	"#4682b4",
+	"#c71585",
+	"#6b8e23",
+	"#ffdab9",
+	"#5f9ea0",
+	"#deb887",
+	"#b22222",
+	"#8fbc8f",
+	"#ffefd5",
+	"#6495ed",
+	"#ff7f50",
+	"#d2691e",
+	"#8a2be2",
+	"#66cdaa",
+	"#ffebcd",
+	"#b0c4de",
+	"#ff4500",
+	"#708090",
+	"#f0e68c",
+	"#dda0dd",
+	"#cd853f",
+	"#afeeee",
+	"#db7093",
+	"#f4a460",
+	"#48d1cc",
+	"#d8bfd8",
+	"#b8860b",
+	"#f5deb3",
+	"#bc8f8f",
+	"#8b4513",
+	"#fafad2",
+	"#00ff7f",
+	"#ff69b4",
+	"#87ceeb",
+	"#ffe4c4",
+	"#6a5acd",
+	"#00bfff",
+	"#ff6347",
+	"#7fffd4",
+	"#ff1493",
+	"#20b2aa",
+	"#ffb6c1",
+	"#8b0000",
+	"#00ff00",
+	"#ff00ff",
+	"#2e8b57",
+];
+const ctx = document.getElementById("testChart");
+let dataSets = randomWalkGenerator(50);
+const config = {
+	type: "scatter",
+	data: {
+		datasets: dataSets,
+	},
+	options: {
+		responsive: true,
+		aspectRatio: 1,
+		scales: {
+			x: {
+				type: "linear",
+				min: -20,
+				max: 20,
+				grid: { color: "rgba(0,0,0,0.2)" },
+				ticks: {
+					stepSize: 1, // smaller squares
+				},
+				title: {
+					display: true,
+					text: "x",
+				},
+			},
+			y: {
+				type: "linear",
+				min: -20,
+				max: 20,
+				grid: { color: "rgba(0,0,0,0.2)" },
+				ticks: {
+					stepSize: 1, // smaller squares
+				},
+				title: {
+					display: true,
+					text: "y",
+				},
+			},
+		},
+	},
+};
+const chart = new Chart(ctx, config);
+
+function randomWalk(N, stepSize) {
 	let points = [{ x: 0, y: 0 }];
-	for (let i = 1; i <= 50; i++) {
+	for (let i = 1; i <= N; i++) {
 		let angleRad = Math.random() * (2 * Math.PI);
-		let xcoordRad = Math.cos(angleRad);
-		let ycoordRad = Math.sin(angleRad);
+		let xcoordRad = Math.cos(angleRad) * stepSize;
+		let ycoordRad = Math.sin(angleRad) * stepSize;
 		console.log(angleRad);
 		console.log(xcoordRad);
 		console.log(ycoordRad);
-		let newxCoord = points[i - 1].x + xcoordRad;
-		let newyCoord = points[i - 1].y + ycoordRad;
-		let x = newxCoord;
-		let y = newyCoord;
+		let x = points[i - 1].x + xcoordRad;
+		let y = points[i - 1].y + ycoordRad;
+
 		points.push({ x, y });
 	}
 	console.log(points);
+	return points;
 }
-randomWalk();
+
+function randomWalkGenerator(numOfWalks) {
+	let datasets = [];
+	for (let i = 0; i <= numOfWalks; i++) {
+		let walk = randomWalk(50, 1);
+		let dataSet = {
+			label: `walk${i}`,
+			data: walk,
+			borderColor: colours[i % colours.length],
+			borderWidth: 0.5,
+			showLine: true,
+			pointRadius: 0,
+		};
+		datasets.push(dataSet);
+	}
+	return datasets;
+}
+
+const submitBtn = document.getElementById("reloadBtn");
+submitBtn.addEventListener("click", () => {
+	dataSets = randomWalkGenerator(50);
+	chart.data.datasets = dataSets;
+	chart.update();
+});
+
+// let walk1 = randomWalk(50, 1);
+// let walk2 = randomWalk(50, 1);
+
+// let dataSet1 = {
+// 	label: "Walk 1",
+// 	data: walk1,
+// 	borderColor: "blue",
+// 	borderWidth: 0.5,
+// 	showLine: true,
+// 	pointRadius: 0,
+// };
+// let dataSet2 = {
+// 	label: "Walk 2",
+// 	data: walk2,
+// 	borderColor: "red",
+// 	borderWidth: 0.5,
+// 	showLine: true,
+// 	pointRadius: 0,
+// };

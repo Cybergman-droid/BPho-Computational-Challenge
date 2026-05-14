@@ -4,20 +4,31 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="stylesheet" href="./output.css" />
+		<!-- <style>
+			#chartContainer {
+				width: 500px; /* make the whole graph smaller */
+				height: 500px; /* keep it square */
+				margin: 0 auto; /* centre it horizontally */
+			}
+
+			#testChart {
+				width: 100%;
+				height: 100%;
+			}
+		</style> -->
+
 		<title>Testing</title>
 	</head>
 	<body>
 		<a href="./index.html">
 			<button class="btn btn-soft btn-accent">Homepage</button></a
 		>
+
 		<div>
-			<canvas
-				id="testChart"
-				width="500"
-				height="500"
-				style="background: aqua"
-			></canvas>
+			<canvas id="testChart"></canvas>
 		</div>
+		<button class="btn btn-soft btn-accent" id="reloadBtn">Reload</button>
 		<script src="./testing.js" type="module"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	</body>
 </html>
