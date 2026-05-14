@@ -178,23 +178,3 @@ submitBtn.addEventListener("click", () => {
 	chart.data.datasets = dataSets;
 	chart.update();
 });
-
-// let walk1 = randomWalk(50, 1);
-// let walk2 = randomWalk(50, 1);
-
-// let dataSet1 = {
-// 	label: "Walk 1",
-// 	data: walk1,
-// 	borderColor: "blue",
-// 	borderWidth: 0.5,
-// 	showLine: true,
-// 	pointRadius: 0,
-// };
-// let dataSet2 = {
-// 	label: "Walk 2",
-// 	data: walk2,
-// 	borderColor: "red",
-// 	borderWidth: 0.5,
-// 	showLine: true,
-// 	pointRadius: 0,
-// };
