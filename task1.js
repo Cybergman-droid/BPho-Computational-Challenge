@@ -172,8 +172,8 @@ function randomWalkGenerator(numOfWalks) {
 	return datasets;
 }
 
-const reloadBtn = document.getElementById("reloadBtn");
-reloadBtn.addEventListener("click", () => {
+const submitBtn = document.getElementById("reloadBtn");
+submitBtn.addEventListener("click", () => {
 	dataSets = randomWalkGenerator(50);
 	chart.data.datasets = dataSets;
 	chart.update();
