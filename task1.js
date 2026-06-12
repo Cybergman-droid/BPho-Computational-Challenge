@@ -95,7 +95,6 @@ const colours = [
 	"#ff00ff",
 	"#2e8b57",
 ];
-
 const ctx = document.getElementById("testChart");
 let dataSets = randomWalkGenerator(50);
 const config = {

@@ -96,7 +96,7 @@ const colours = [
 	"#2e8b57",
 ];
 const ctx = document.getElementById("testChart");
-let dataSets = randomWalkGenerator(50);
+let dataSets;
 const config = {
 	type: "scatter",
 	data: {
@@ -137,9 +137,20 @@ const config = {
 };
 const chart = new Chart(ctx, config);
 
+const h = 6.63 * 10 ** -23;
+const k = 1.381 * 10 ** -34;
+const c = 2.998 * 10 ** 8;
+let lambda = 500 * 10 ** -9;
+const e = 2.71828;
+const T = 5000;
+
+let planckspec =
+	(2 * h * c ** 2) /
+	lambda ** 5 /
+	e ** (((h * c) / (lambda * k * T) - 1) ** -1);
+console.log(planckspec);
 const reloadBtn = document.getElementById("reloadBtn");
 reloadBtn.addEventListener("click", () => {
-	dataSets = randomWalkGenerator(50);
 	chart.data.datasets = dataSets;
 	chart.update();
 });
