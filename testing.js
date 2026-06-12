@@ -149,6 +149,7 @@ let planckspec =
 	lambda ** 5 /
 	e ** (((h * c) / (lambda * k * T) - 1) ** -1);
 console.log(planckspec);
+
 const reloadBtn = document.getElementById("reloadBtn");
 reloadBtn.addEventListener("click", () => {
 	chart.data.datasets = dataSets;
